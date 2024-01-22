@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.0
+ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
@@ -21,6 +21,8 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libvips node-gyp pkg-config python-is-python3
 
+RUN apt-get update -qq && apt-get install -y postgresql-client libpq-dev
+
 # Install JavaScript dependencies
 ARG NODE_VERSION=18.15.0
 ARG YARN_VERSION=latest
@@ -37,7 +39,8 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules
-COPY package.json yarn.lock ./
+
+# COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 # Copy application code
