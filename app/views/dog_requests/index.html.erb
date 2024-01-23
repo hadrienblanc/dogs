@@ -1,23 +1,12 @@
-<div class="  items-center justify-center bg-gray-100">
+<div class="items-center justify-center bg-gray-100 ">
   <div class="bg-white p-6 rounded-lg shadow-md">
-    <h1 class="text-xl mb-4">Dog Image Finder</h1>
-    
-    <%= turbo_frame_tag 'new_dog_request' do %>
-      <%= form_with model: @dog_request, data: { turbo_frame: 'new_dog_request' } do |form| %>
-        <div class="mb-4 ">
-          <%= form.label :breed, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-          <%= form.text_field :breed, class: 'form-input w-full rounded-md shadow-sm' %>
-        </div>
-        <div class="text-center">
-          <%= form.submit 'Submit', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
-        </div>
-      <% end %>
-    <% end %>
+    <h1 class="text-3xl mb-4 text-center">Dog Image Finder</h1>
+    <%= render partial: 'breed_form' %>
 
+    <div class="columns-1 lg:columns-3 mt-10 ">
     <%= turbo_frame_tag 'dog_requests' do %>
-      <% @dog_requests.each do |dog_request| %>
-        <%= render dog_request %>
-      <% end %>
+      <%= render @dog_requests %>
     <% end %>
+    </div>
   </div>
 </div>

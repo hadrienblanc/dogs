@@ -1,8 +1,19 @@
-<div id="dog_request_<%= dog_request.id %>" class="mt-4 ">
 
-<span class="font-bold text-gray-800"><%= dog_request.breed %></span>
+<div
+  id="dog_request_<%= dog_request.id %>"
+  class="w-full bg-white  border border-gray-400 bg-gray-200 rounded-lg shadow break-inside-avoid-column mb-5">
 
-<% if dog_request.url.present? %>
-  <p class="text-blue-500"><%= dog_request.url %></p>
-<% end %>
+    <div class="p-5 text-center">
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 "><%= dog_request.breed&.capitalize %></h5>
+
+    </div>
+    <div class="text-center p-5">
+
+    <% if dog_request.url.present? %>
+    <img class="w-full aspect-square m-auto" src="<%= dog_request.url %>" />
+      <% else %>
+    <%= render '/dog_requests/spinner' %>
+  <% end %>
+
+    </div>
 </div>
