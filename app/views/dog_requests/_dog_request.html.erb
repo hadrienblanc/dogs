@@ -1,0 +1,8 @@
+<div id="dog_request_<%= dog_request.id %>" class="mt-4 ">
+
+<span class="font-bold text-gray-800"><%= dog_request.breed %></span>
+
+<% if dog_request.url.present? %>
+  <p class="text-blue-500"><%= dog_request.url %></p>
+<% end %>
+</div>

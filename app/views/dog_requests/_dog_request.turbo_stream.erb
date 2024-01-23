@@ -1,0 +1,4 @@
+<!-- app/views/dog_requests/_dog_request.turbo_stream.erb -->
+<%= turbo_stream.replace "dog_request_#{dog_request.id}" do %>
+ <%= render partial: 'dog_request', locals: { dog_request: dog_request } %>
+<% end %>

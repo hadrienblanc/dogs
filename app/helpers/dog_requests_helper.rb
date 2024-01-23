@@ -1,0 +1,2 @@
+module DogRequestsHelper
+end
