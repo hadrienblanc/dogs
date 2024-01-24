@@ -28,10 +28,10 @@ class DogImageFetcher
     if response.is_a?(Net::HTTPSuccess)
       JSON.parse(response.body)
     else
-      { error: "Unable to fetch image", status: response.code }
+      { 'message' => "Unable to fetch image", status: response.code }
     end
   rescue StandardError => e
-    { error: e.message }
+    { 'message' => e.message }
   end
 
   def valid_url?(url)
