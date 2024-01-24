@@ -1,12 +1,12 @@
 <div class="items-center justify-center bg-gray-100 ">
   <div class="bg-white p-6 rounded-lg shadow-md">
+    <%= image_tag 'dog.png', class: 'w-12  m-auto' %>
     <h1 class="text-3xl mb-4 text-center">Dog Image Finder</h1>
     <%= render partial: 'breed_form' %>
-
-    <div class="columns-1 lg:columns-3 mt-10 ">
-    <%= turbo_frame_tag 'dog_requests' do %>
-      <%= render @dog_requests %>
-    <% end %>
+    <div class="columns-1 lg:columns-4 xl:columns-5 mt-10 ">
+      <%= turbo_frame_tag 'dog_requests' do %>
+        <%= render @dog_requests %>
+      <% end %>
     </div>
   </div>
 </div>

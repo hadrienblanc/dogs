@@ -6,15 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    
+    <%= favicon_link_tag asset_path('dog.png') %>
   </head>
-
   <body>
-    <main class="container mx-auto">
-      <%= yield %>
-    </main>
+    <div class="flex flex-col min-h-screen">
+      <div class="flex-grow">
+        <main class="container mx-auto">
+          <%= yield %>
+        </main>
+      </div>
+      <%= render '/layouts/footer' %>
+    </div>
   </body>
 </html>

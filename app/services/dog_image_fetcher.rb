@@ -16,12 +16,15 @@ class DogImageFetcher
   def fetch_random_image
     parsed_response = get
 
-    @dog_request.update!(url: parsed_response['message'], responded_at: DateTime.now)
+    if valid_url?(parsed_response['message']) 
+      @dog_request.update!(url: parsed_response['message'], responded_at: DateTime.now)
+    else
+      @dog_request.update!(error_message: parsed_response['message'], responded_at: DateTime.now)
+    end
   end
 
   def get
     response = Net::HTTP.get_response(uri)
-
     if response.is_a?(Net::HTTPSuccess)
       JSON.parse(response.body)
     else
@@ -29,6 +32,10 @@ class DogImageFetcher
     end
   rescue StandardError => e
     { error: e.message }
+  end
+
+  def valid_url?(url)
+    url =~ URI::DEFAULT_PARSER.make_regexp
   end
 
   def uri
