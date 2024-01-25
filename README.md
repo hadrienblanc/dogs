@@ -4,6 +4,8 @@ This Ruby on Rails project is designed to showcase a modern web application deve
 
 Let's break down each of these technologies, especially in the context of building a single-page application (SPA) that emphasizes productivity and follows Ruby on Rails conventions.
 
+## Stack :
+
 ### 1. **Rails 7**
    - **Technology**: Rails 7 is the latest major version of the Ruby on Rails framework. It's a web application framework written in Ruby, known for its convention over configuration philosophy.
    - **Goal**: Rails 7 aims to simplify the process of building modern web applications. It includes support for JavaScript frameworks, better database management, and more straightforward ways to handle background jobs. By embracing latest practices, it increases developer productivity, allowing for rapid development and clean, maintainable code.
@@ -28,3 +30,30 @@ In the context of SPAs, these technologies work together to create a seamless, i
 - **Turbo Frames**: By using `turbo_frame_tag`, parts of the page can be updated without a full reload. This tag allows content inside it to be updated independently, enabling dynamic, partial page updates.
   
 - **Convention over Configuration**: This core Rails philosophy is evident in how these technologies are integrated. They are designed to work well together with minimal setup, allowing developers to focus on building features rather than configuring basic functionalities.
+
+
+## Code
+
+### Index page
+```ruby
+  <%= turbo_frame_tag 'dog_requests' do %>
+    <%= render @dog_requests %>
+  <% end %>
+```
+
+### Objet creation :
+```ruby
+<%= turbo_stream.prepend 'dog_requests', partial: 'dog_request', locals: { dog_request: @dog_request } %>
+
+```
+
+### The event from ActiveJob (when we fetch the dog image)
+
+```ruby
+    Turbo::StreamsChannel.broadcast_replace_to(
+      'dog_request_channel',
+      partial: 'dog_requests/dog_request',
+      target: "dog_request_#{dog_request.id}",
+      locals: { dog_request: }
+    )
+```
