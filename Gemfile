@@ -70,6 +70,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webmock"
+  gem "simplecov"
 end
 
 gem "tailwindcss-rails", "~> 2.3"

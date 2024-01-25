@@ -4,6 +4,11 @@ require "rails/test_help"
 
 require 'webmock/minitest'
 
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter 'test'
+end
 
 module ActiveSupport
   class TestCase
