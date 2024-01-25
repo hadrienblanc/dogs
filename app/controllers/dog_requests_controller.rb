@@ -1,6 +1,8 @@
 class DogRequestsController < ApplicationController
+  MAX_DOGS_ON_INDEX = 100
+
   def index
-    @dog_requests = DogRequest.order(created_at: :desc)
+    @dog_requests = DogRequest.order(created_at: :desc).limit(MAX_DOGS_ON_INDEX)
     @dog_request = DogRequest.new
   end
 
