@@ -35,10 +35,11 @@ class DogImageFetcher
   end
 
   def valid_url?(url)
-    url =~ URI::DEFAULT_PARSER.make_regexp
+    url.start_with?("http") && url =~ URI::DEFAULT_PARSER.make_regexp
   end
 
   def uri
-    URI("https://dog.ceo/api/breed/#{@dog_request.breed}/images/random")
+    breed = CGI.escape(@dog_request.breed)
+    URI("https://dog.ceo/api/breed/#{breed}/images/random")
   end
 end
