@@ -16,16 +16,6 @@ class DogRequestsController < ApplicationController
     end
   end
 
-  def update
-    @dog_request = DogRequest.find(params[:id])
-    # Fetch from API and update @dog_request
-    @dog_request.update(url: 'todo.com', responded_at: DateTime.now)
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to root_path }
-    end
-  end
-
   def dog_request_params
     params.require(:dog_request).permit(:breed)
   end
