@@ -57,3 +57,14 @@ In the context of SPAs, these technologies work together to create a seamless, i
       locals: { dog_request: }
     )
 ```
+
+
+## A lazy loading frame
+
+```ruby
+  <%= turbo_frame_tag :dog_requests,
+    src: dog_requests_index_lazy_path,
+    loading: :lazy do %>
+    <!-- example : html for a spinner -->
+  <% end %>
+```
