@@ -19,6 +19,7 @@ Let's break down each of these technologies, especially in the context of buildi
 
 ### 4. **Turbo**
    - **Technology**: Turbo is another part of the Hotwire suite. It consists of several libraries, including Turbo Drive, Turbo Frames, and Turbo Streams, each aiding in creating faster and more dynamic applications without the need for much custom JavaScript.
+   More info : https://turbo.hotwired.dev
 
 ### 5. **ActionCable**
    - **Technology**: ActionCable is a Rails framework that seamlessly integrates WebSockets with the rest of a Rails application. It allows for real-time features, such as chat and notifications.
