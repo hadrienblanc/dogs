@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :dog_requests, only: %i[index create update]
   root to: 'dog_requests#index'
 
+  get 'dog_requests/index_lazy', to: 'dog_requests#index_lazy'
+
   post 'fetch_dog_request', to: 'dog_requests#fetch', as: 'fetch_dog_request'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

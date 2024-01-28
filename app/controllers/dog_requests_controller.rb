@@ -5,6 +5,10 @@ class DogRequestsController < ApplicationController
     @dog_requests = DogRequest.order(created_at: :desc).limit(MAX_DOGS_ON_INDEX)
   end
 
+  def index_lazy
+    @dog_requests = DogRequest.order(created_at: :desc).limit(MAX_DOGS_ON_INDEX)
+  end
+
   def create
     @dog_request = DogRequest.create(dog_request_params)
     UpdateDogRequestJob.perform_later(@dog_request.id)

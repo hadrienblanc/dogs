@@ -1,8 +1,9 @@
 <%= image_tag 'dog.png', class: 'w-12 m-auto mt-12 ' %>
 <h1 class="text-3xl mb-4 text-center">Dog Image Finder</h1>
 <%= render partial: 'breed_form' %>
-<div class="columns-1 lg:columns-4 xl:columns-5 mt-10 ">
-  <%= turbo_frame_tag 'dog_requests' do %>
-    <%= render @dog_requests %>
+<div class="columns-1 lg:columns-4 xl:columns-5 mt-10 "> 
+  <%= turbo_frame_tag :dog_requests,
+    src: dog_requests_index_lazy_path,
+    loading: :lazy do %>
   <% end %>
 </div>
