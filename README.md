@@ -42,7 +42,7 @@ In the context of SPAs, these technologies work together to create a seamless, i
   <% end %>
 ```
 
-### Objet creation :
+### Objet creation
 ```ruby
 <%= turbo_stream.prepend 'dog_requests', partial: 'dog_request', locals: { dog_request: @dog_request } %>
 
