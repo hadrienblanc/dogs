@@ -8,7 +8,7 @@ class DogRequestsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create dog_request and redirect to root" do
     assert_difference('DogRequest.count') do
-      post dog_requests_url, params: { dog_request: { breed: 'Labrador' } }
+      post dog_requests_url, params: { breed: 'Labrador' }
     end
   
     assert_redirected_to root_url
@@ -17,7 +17,7 @@ class DogRequestsControllerTest < ActionDispatch::IntegrationTest
   
   test "should create dog_request with turbo_stream" do
     assert_difference('DogRequest.count') do
-      post dog_requests_url, params: { dog_request: { breed: 'Labrador' } }, as: :turbo_stream
+      post dog_requests_url, params: { breed: 'Labrador' }, as: :turbo_stream
     end
   
     assert_response :success
