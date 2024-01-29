@@ -20,6 +20,6 @@ class DogRequestsController < ApplicationController
   end
 
   def dog_request_params
-    params.require(:dog_request).permit(:breed)
+    params.permit(:breed)
   end
 end
